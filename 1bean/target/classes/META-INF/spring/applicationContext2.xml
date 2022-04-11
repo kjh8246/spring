@@ -8,7 +8,9 @@
 	<!-- id는 변수명 역할의 식별자 , class 는 객체를 생성할 클래스 (패키지명 반드시 표기) -->
 	
 	<bean class="day1.review.BuyController" id="controller">
-			<!-- 의존관계 주입 : 생성자에 전달하는 인자가 service 라는 이름의 bean -->
+			<!-- 의존관계 주입 : 생성자에 전달하는 인자가 service 라는 이름의 bean
+			BuyController 의 커스텀생성자에 주입되는 빈은 BuyService 클래스 타입이어야 합니다.
+			 -->
 		<constructor-arg ref="service"/>
 	</bean>
 	
