@@ -25,6 +25,7 @@ div{
 <div>
 <!-- 객체가 null 인지 비교 : 같다(==)는 eq , 같지않다(!=)  ne  -->
 <!-- member 애트리뷰는 로그인 성공하면 session 에 저장했다. -->
+<!-- 이 파일의 guswprudfh(./) = http://localhost:8085/idev/  -->
 <c:choose>  
 	<c:when test="${member == null}">  
 	<!-- 로그인 안했을 때 메뉴 -->
@@ -38,6 +39,7 @@ div{
 		<a href="./member/update.do">내 정보 수정</a>
 		<a href="./schedule/new.do">스케쥴</a>
 		<a href="logout.do">로그아웃</a>
+		<a href="logout">로그아웃2</a>
 	</c:otherwise>
 </c:choose>
 </div>

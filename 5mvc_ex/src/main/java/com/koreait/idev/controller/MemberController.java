@@ -17,7 +17,7 @@ import com.koreait.idev.mapper.MemberMapper;
 import com.koreait.idev.model.Member;
 
 @Controller
-@RequestMapping(value = "member/")
+@RequestMapping(value = "member/")	//Model 저장소에 저장한 에트리뷰트중에 member은 세션
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -57,8 +57,15 @@ public class MemberController {
 	}
 	
 	@GetMapping("/idCheck.do")
-	public String idCheck() {
-		return "member/idCheck.jsp";
+	public String idCheck(String email,Model model) {	//검사하기 위한 email은 요청파라미터입니다.
+		String msg;
+		if(mapper.checkEmail(email)==0)
+			msg="사용할수 있는 이메일 입니다";
+		else 
+			msg="사용할수 없는 이베일 입니다";
+		model.addAttribute("email",email);
+		model.addAttribute("msg",msg);
+		return "member/idCheck";
 	}
 	
 	
