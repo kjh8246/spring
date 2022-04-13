@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.idev.mapper.FreeboardMapper">
+	<select id="getPageList" parameterType="Map" resultType="Freeboard">	<!-- 파라미터타입은 ?에들어가는거 리절트타입은 값타입 -->
+		SELECT * FROM (
+		SELECT rownum AS R ,T.* FROM 
+		(SELECT * FROM freeboard ORDER BY idx DESC)T)	-- T는 앞의 select 결과에 대한 별칭
+		WHERE R BETWEEN #{startNo} AND #{endNo}
+	</select>
+	<select id="getCount" resultType="int">
+	SELECT count(*) FROM freeboard
+	</select>
+</mapper>
