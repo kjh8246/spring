@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,5 +41,28 @@ public class FreeboardController {
 		model.addAttribute("list", list);
 		
 		return "community/list";
+		//return "community/list2";		//pageNo 를 form data로 전달하는 예시
 	}
+	@GetMapping("/insert")
+	public String insert(int pageNo,Model model) {
+		model.addAttribute("page",pageNo);
+		return "community/insert";
+	}
+	
+	@PostMapping("/insert")
+	public String save(Freeboard dto) {
+		mapper.insert(dto);
+		return "redirect:list";		//1페이지로 이동
+	}
+	
+	@GetMapping("/detail")
+	public String detail(int idx,int pageNo,Model model) {
+		//조회수증가 먼저
+		mapper.readCount(idx);
+		Freeboard bean = mapper.getOne(idx);		//sql실행
+		model.addAttribute("bean", bean);
+		model.addAttribute("page",pageNo);
+		return "community/detail";
+	}
+	
 }
