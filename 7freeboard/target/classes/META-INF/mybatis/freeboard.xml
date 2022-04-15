@@ -10,7 +10,9 @@
 	</insert>
 	<!-- 글 수정 -->
 	<update id="update" parameterType="Freeboard">
-	UPDATE freeboard SET content=#{content},wdate=sysdate WHERE idx=#{idx}
+	UPDATE freeboard SET content=#{content},SUBJECT =CONCAT('(수정)',subject ),
+		wdate=sysdate 
+	WHERE idx=#{idx}
 	</update>
 	<!-- 글 상세보기 -->
 	<select id="getOne" parameterType="int" resultType="Freeboard"> <!-- 파라미터값 : 받는값 리졀트값 mapper에 쓰는값 없으면 보이드-->
@@ -30,4 +32,19 @@
 	<select id="getCount" resultType="int">
 	SELECT count(*) FROM freeboard
 	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM freeboard WHERE idx=#{idx}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
