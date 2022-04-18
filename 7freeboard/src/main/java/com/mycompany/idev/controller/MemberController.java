@@ -21,8 +21,8 @@ import com.mycompany.idev.mapper.MemberMapper;
 import com.mycompany.idev.dto.Member;
 
 @Controller
-@RequestMapping(value = "member/")
-@SessionAttributes({"member","url","message"})
+@RequestMapping(value = "/member")
+//@SessionAttributes({"member"})	//배열로 애트리뷰트이름을 나열할 수 있습니다.
 public class MemberController {
 	private static final Logger logger 
 	= LoggerFactory.getLogger(MemberController.class);

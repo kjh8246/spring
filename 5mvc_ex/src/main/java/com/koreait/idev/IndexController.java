@@ -80,6 +80,7 @@ public class IndexController {
 			//url = "login.do?success=n";
 			//rdattr.addFlashAttribute("success","n");
 			url = "login.do?success=n";
+			
 		}
 		
 			

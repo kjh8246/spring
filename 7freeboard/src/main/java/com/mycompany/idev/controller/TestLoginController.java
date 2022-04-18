@@ -13,7 +13,7 @@ import com.mycompany.idev.dto.Administrator;
 import com.mycompany.idev.dto.Member;
 
 @Controller
-//@SessionAttributes({"user","admin"})
+//@SessionAttributes({"member","admin"})	//model.addAttribute 로 세션에 저장할때
 public class TestLoginController {
 	private static final Logger logger 
 	= LoggerFactory.getLogger(MemberController.class);
@@ -22,14 +22,11 @@ public class TestLoginController {
 	@RequestMapping("login")
 		public String login(HttpServletRequest request) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", new Member(0,"모모",null,"momo@daum.nets"));
+			session.setAttribute("member", new Member(0,"모모",null,"momo@daum.nets"));
 			
 			return "redirect:/";
 		}
 		
-	
-	
-	
 	@RequestMapping("admin")	//관리자로그인
 		public String admin(HttpSession session) {
 			session.setAttribute("admin", new Administrator("root",1));
